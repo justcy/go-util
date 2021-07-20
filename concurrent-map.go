@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"sync"
 )
-
+//参考 https://github.com/orcaman/concurrent-map/blob/master/concurrent_map.go
 const SLOTS = 32
 
 type CMap []*CMapSlot
