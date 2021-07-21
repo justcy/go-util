@@ -38,17 +38,19 @@ func RandGroupN(p ...uint32) int {
 	}
 	return RandGroup(r)
 }
+
 //随机获取map中的一个元素，map的key为uint32代表权重
-func RandGroupItem(m map[uint32]interface{}) interface{}{
+func RandGroupItem(m map[uint32]interface{}) interface{} {
 	if m == nil {
 		panic("args not found")
 	}
-	r := make([]uint32,0, len(m))
+	r := make([]uint32, 0, len(m))
 	for key := range m {
 		r = append(r, key)
 	}
 	return m[uint32(RandGroup(r))]
 }
+
 //在a-b之间随机获取一个整数
 func RandInterval(a, b int32) int32 {
 	if a == b {
@@ -60,10 +62,12 @@ func RandInterval(a, b int32) int32 {
 	}
 	return int32(rand.Int63n(max-min+1) + min)
 }
+
 //随机获取0-max之间的一个随机数
-func RandNum(max int) int {
-	return int(RandInterval(int32(0),int32(max)))
+func RandNum(max int32) int32 {
+	return RandInterval(int32(0), int32(max))
 }
+
 //在a,b之间随机获取最多num个整数
 func RandIntervalN(a, b int32, num uint32) []int32 {
 	if a == b {
@@ -100,4 +104,13 @@ func RandIntervalN(a, b int32, num uint32) []int32 {
 		l--
 	}
 	return r
+}
+func HitRate100(rate int32) bool {
+	return RandNum(100) < rate
+}
+func HitRate1000(rate int32) bool {
+	return RandNum(1000) < rate
+}
+func HitRate10000(rate int32) bool {
+	return RandNum(10000) < rate
 }
