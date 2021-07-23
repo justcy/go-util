@@ -7,6 +7,13 @@ import (
 	"time"
 )
 
+func assert(i interface{}) []interface{} {
+	if i == nil {
+		return nil
+	} else {
+		return i.([]interface{})
+	}
+}
 func CheckErr(err error) {
 	if err != nil {
 		fmt.Println("err :", err)
