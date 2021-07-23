@@ -105,6 +105,13 @@ func RandIntervalN(a, b int32, num uint32) []int32 {
 	}
 	return r
 }
+//随机打乱顺序
+func Shuffle(slice []int32 ) []int32 {
+	rand.Shuffle(len(slice), func(i, j int) {
+		slice[i],slice[j] = slice[j],slice[i]
+	})
+	return slice
+}
 func HitRate100(rate int32) bool {
 	return RandNum(100) < rate
 }
