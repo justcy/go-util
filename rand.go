@@ -121,3 +121,21 @@ func HitRate1000(rate int32) bool {
 func HitRate10000(rate int32) bool {
 	return RandNum(10000) < rate
 }
+
+
+func randString(length int, source []byte) string {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	bytes := make([]byte, length)
+	for i := 0; i < length; i++ {
+		bytes[i] = source[r.Intn(len(source))]
+	}
+	return string(bytes)
+}
+func RandStringNumber(length int) string {
+	var temp = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+	return randString(length, temp)
+}
+func RandString(length int) string {
+	var temp = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	return randString(length, temp)
+}
